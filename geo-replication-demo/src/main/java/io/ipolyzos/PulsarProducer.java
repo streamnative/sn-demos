@@ -11,7 +11,6 @@ public class PulsarProducer {
     private static final String FALLBACK_BROKER_URL = "pulsar://localhost:6652";
     private static final int totalMessages = 300;
     private static int messagesSoFar = 1;
-    private static final String token = "";
     private static final String topicName = "persistent://testt/testns/t1";
 
 
