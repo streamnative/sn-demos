@@ -10,6 +10,7 @@ import java.util.function.BiConsumer;
 import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.client.api.Producer;
 import org.apache.pulsar.client.api.PulsarClient;
+import org.apache.pulsar.client.api.PulsarClientException;
 import org.apache.pulsar.client.api.Schema;
 
 public class EventProducer {
@@ -33,6 +34,18 @@ public class EventProducer {
                     .sendAsync()
                     .whenComplete(callback);
         }
+
+        // add a shutdown hook to clear the resources
+        Runtime.getRuntime()
+                .addShutdownHook(new Thread(() -> {
+                    System.out.println("Closing producer and pulsar client..");
+                    try {
+                        eventProducer.close();
+                        pulsarClient.close();
+                    } catch (PulsarClientException e) {
+                        e.printStackTrace();
+                    }
+                }));
     }
 
     private static final BiConsumer<MessageId, Throwable> callback = (id, ex) -> {
