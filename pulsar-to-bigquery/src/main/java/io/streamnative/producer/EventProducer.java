@@ -28,6 +28,7 @@ public class EventProducer {
                 .blockIfQueueFull(true)
                 .create();
 
+        // 4. Send some messages
         for (String event: events) {
             eventProducer.newMessage()
                     .value(event)
@@ -35,7 +36,7 @@ public class EventProducer {
                     .whenComplete(callback);
         }
 
-        // add a shutdown hook to clear the resources
+        // 5. Add a shutdown hook to clear the resources
         Runtime.getRuntime()
                 .addShutdownHook(new Thread(() -> {
                     System.out.println("Closing producer and pulsar client..");
