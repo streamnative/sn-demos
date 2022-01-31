@@ -10,9 +10,3 @@ logTopic: "persistent://public/default/parsed_events_logs"
 autoAck: true
 cleanupSubscription: true
 subName: "parsed_events_sub"
-#inputSpecs:
-#  persistent://public/default/parsed_events:
-#    schemaType: "json"
-#resources:
-#  cpu: 0.5
-#  ram: 500000000

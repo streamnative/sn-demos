@@ -34,7 +34,7 @@ Make sure that the toolset pod name, matches the own of your pod - should be [in
 
 5. Expose the Pulsar Broker address if you want to run your producer from your local machine
 ```shell
-ubectl port-forward service/pulsar-proxy 6650:6650 8080:8080 -n demo
+kubectl port-forward service/pulsar-proxy 6650:6650 8080:8080 -n demo
 ```
 
 6. Run the EventProducer
