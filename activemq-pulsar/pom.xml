@@ -19,15 +19,15 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.pulsar</groupId>
-      <artifactId>pulsar-client</artifactId>
-      <version>${pulsar.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-client</artifactId>
       <version>${activemq.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.datastax.oss</groupId>
+      <artifactId>pulsar-jms-all</artifactId>
+      <version>1.0.0</version>
     </dependency>
 
     <dependency>

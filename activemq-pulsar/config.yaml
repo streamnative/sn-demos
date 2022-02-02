@@ -1,7 +1,7 @@
 tenant: "public"
 namespace: "default"
 name: "activemq-source"
-topicName: "amqp_topic"
+topicName: "test_queue"
 parallelism: 1
 
 configs:

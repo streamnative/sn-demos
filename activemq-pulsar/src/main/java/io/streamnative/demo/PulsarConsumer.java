@@ -1,4 +1,4 @@
-package io.ipolyzos;
+package io.streamnative.demo;
 
 import java.nio.charset.Charset;
 import org.apache.pulsar.client.api.Consumer;
@@ -15,10 +15,10 @@ public class PulsarConsumer {
                 .build();
 
         Consumer<byte[]> consumer = pulsarClient.newConsumer(Schema.BYTES)
-                .topic("amqp_topic")
-                .consumerName("amqp-consumer")
+                .topic("test_queue")
+                .consumerName("pulsar-consumer")
                 .subscriptionInitialPosition(SubscriptionInitialPosition.Earliest)
-                .subscriptionName("amqp-subscription")
+                .subscriptionName("pulsar-subscription")
                 .subscribe();
 
         int messageCount = 0;
