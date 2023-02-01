@@ -1,3 +1,3 @@
 Streamnative Demos
 ------------------
-This repository contains a collection of resources for the Streamnative Platform Demos.
+This repository contains a collection of resources for demos, and tutorials.
