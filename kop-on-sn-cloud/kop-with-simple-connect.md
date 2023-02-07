@@ -30,7 +30,7 @@ vim config/connect-standalone.properties
 
 We need to config both Kafka Connect workers, Source connectors and Sink connector:
 
-```properties
+```conf
 bootstrap.servers=SERVER-URL
 
 sasl.login.callback.handler.class=io.streamnative.pulsar.handlers.kop.security.oauth.OauthLoginCallbackHandler
