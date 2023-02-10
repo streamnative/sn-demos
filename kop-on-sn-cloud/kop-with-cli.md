@@ -53,7 +53,7 @@ The `YOUR-AUDIENCE-STRING` can be found in StreamNative Cloud panel:
 ![](./images/audience.jpg)
 
 
-1. Run a Kafak consumer start to receive frome `kop-test-topic`:
+1. Run a Kafka consumer start to receive frome `kop-test-topic`:
 
 ```bash
 # run consumer
@@ -69,7 +69,7 @@ You can get your `SERVER-URL` in StreamNative Cloud panel:
 ![](./images/broker-url.jpg)
 
 
-1. Run a Kafak producer on another terminal:
+1. Run a Kafka producer on another terminal:
 
 ```bash
 # run producer
