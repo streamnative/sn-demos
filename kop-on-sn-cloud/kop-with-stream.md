@@ -1,5 +1,5 @@
 
-Follow [this tutorial](https://docs.google.com/document/d/1yonds3Sk_aXGFWyCtl7buzTpJt6f5vUM_H8sryVNEwE/edit) to create a Pulsar cluster and a service account.
+Follow [this tutorial](https://www.notion.so/streamnativeio/StreamNative-Cloud-for-Kafka-DRAFT-6aa74659b5f5495883beaa88e21eabc6) to create a Pulsar cluster and a service account.
 
 1. Add Kafka Stream and OAuth maven dependencies:
 
@@ -14,6 +14,8 @@ Follow [this tutorial](https://docs.google.com/document/d/1yonds3Sk_aXGFWyCtl7bu
     <artifactId>oauth-client</artifactId>
     <version>2.9.1.5</version>
 </dependency>
+
+<!-- Optional: add a slf4j dependency to see the log output -->
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-log4j12</artifactId>

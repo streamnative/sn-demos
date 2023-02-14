@@ -99,7 +99,7 @@ file=test.sink.txt
 topics=connect-test
 ```
 
-This source will read from the `connect-test` topic then write messages into `test.sink.txt`.
+This sink will read from the `connect-test` topic then write messages into `test.sink.txt`.
 
 3️⃣ Now start a standalone Kafka connector:
 
