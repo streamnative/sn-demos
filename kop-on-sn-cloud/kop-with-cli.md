@@ -20,7 +20,7 @@ tar xzf ./kafka_2.13-3.1.0.tgz
 2. Download supplementary libraries of Kop:
 
 ```bash
-cd ~/kafka/kafka_2.13-3.1.0.tgz
+cd ~/kafka/kafka_2.13-3.1.0
 # download supplementary libraries
 curl -O https://repo1.maven.org/maven2/io/streamnative/pulsar/handlers/oauth-client/2.9.1.5/oauth-client-2.9.1.5.jar --output-dir ./libs
 curl -O https://repo1.maven.org/maven2/org/apache/pulsar/pulsar-client-admin-api/2.9.2/pulsar-client-admin-api-2.9.2.jar --output-dir ./libs
@@ -53,7 +53,7 @@ The `YOUR-AUDIENCE-STRING` can be found in StreamNative Cloud panel:
 ![](./images/audience.jpg)
 
 
-1. Run a Kafka consumer start to receive frome `kop-test-topic`:
+1. Run a Kafka consumer start to receive from `kop-test-topic`:
 
 ```bash
 # run consumer
