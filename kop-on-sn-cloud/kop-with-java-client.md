@@ -135,7 +135,7 @@ public class SNCloudOAuth2Producer {
         final KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         
         // 2. Produce one message
-        final String topicName = "persistent://public/default/kafka-topic3";
+        final String topicName = "persistent://public/default/test-kafka-topic";
         final Future<RecordMetadata> recordMetadataFuture = producer.send(new ProducerRecord<>(topicName, "hello"));
         final RecordMetadata recordMetadata = recordMetadataFuture.get();
         System.out.println("Send hello to " + recordMetadata);
