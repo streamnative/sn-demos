@@ -4,7 +4,7 @@ Create a Schema Registry on AWS Glue Studio, sepcify your region and registry na
 
 ![](../images/create-registry.jpg)
 
-You don't create schema manually, kafka client will create schema automatically.
+You don't need to create schema manually, kafka python client will create schema automatically.
 
 And you need to get the credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`) of your AWS account, which can be found in AWS console. We will use them later.
 
