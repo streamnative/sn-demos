@@ -1,7 +1,7 @@
 
 Follow [this tutorial](https://www.notion.so/streamnativeio/StreamNative-Cloud-for-Kafka-DRAFT-6aa74659b5f5495883beaa88e21eabc6) to create a Pulsar cluster and a service account.
 
-1. Add Kafka Stream and OAuth maven dependencies:
+1️⃣ Add Kafka Stream and OAuth maven dependencies:
 
 ```xml
 <dependency>
@@ -34,7 +34,7 @@ If you encounter the `java.lang.UnsatisfiedLinkError` when start stream applicat
 ```
 
 
-2. Write a simple Kafka Stream application named `wordcount-application`:
+2️⃣ Write a simple Kafka Stream application named `wordcount-application`:
 
 ```java
 
@@ -139,14 +139,14 @@ The `SERVER-URL` can be found in StreamNative Cloud panel too:
 ![](./images/broker-url.jpg)
 
 
-3. Before run this application named `wordcount-application`, you should create two topics `wordcount-application-counts-store-repartition` and `wordcount-application-counts-store-changelog`. They are associated with this stream application.
+3️⃣ Before run this application named `wordcount-application`, you should create two topics `wordcount-application-counts-store-repartition` and `wordcount-application-counts-store-changelog`. They are associated with this stream application.
 
 You can create topics on the website:
 
 ![](./images/create-topics.jpg)
 
 
-4. Run the Java code, then use Kafka CLI to send messages to the input topic `TextLinesTopic`:
+4️⃣ Run the Java code, then use Kafka CLI to send messages to the input topic `TextLinesTopic`:
 
 ```bash
 ./bin/kafka-console-producer.sh \

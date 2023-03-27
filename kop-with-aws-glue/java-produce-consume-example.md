@@ -152,7 +152,7 @@ public class SNCloudOAuth2ProducerAWS {
         ));
 
         // 2. Set the schema registry properties
-        final String schemaName = "persistent-public-default-glue-test-value";
+        final String schemaName = "user";
         final String registryName = "test-registry";
         String topicName = "persistent://public/default/aws-glue-test";
 
