@@ -14,26 +14,39 @@ To add the Apache Hudi Connector for AWS Glue, complete the following steps:
 
 1.  On the AWS Glue Studio console, choose **Connectors**.
 2.  Choose **Go to AWS Marketplace**.
-3.  Search for and choose **Apache Hudi Connector for AWS Glue**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image003.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image003.png)
+3.  Search for and choose **Apache Hudi Connector for AWS Glue**. 
+ 
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image003.png)
+
 4.  Choose **Continue to Subscribe**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image005.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image005.png)
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image005.png)
+
 5.  Review the terms and conditions, then choose **Accept Terms**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image007.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image007.png)  
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image007.png)
+
     After you accept the terms, it takes some time to process the request.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image009.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image009.png)When the subscription is complete, you see the **Effective date** populated next to the product.
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image009.png)
+
 6.  Choose **Continue to Configuration**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image011.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image011.png)
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image011.png)
+
 7.  For **Fulfillment option**, choose **Glue 3.0**.
 8.  For **Software version**, choose **0.10.1**.
 9.  Choose **Continue to Launch**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image013.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image013.png)
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image013.png)
+
 10.  Choose **Usage instructions**, and then choose **Activate the Glue connector from AWS Glue Studio**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image015.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image015.png)  
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image015.png)
     You’re redirected to AWS Glue Studio.
 11.  For **Name**, enter `Hudi-Glue-Connector`.
 12.  Choose **Create connection and activate connector**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image017.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image017.png)
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image017.png)
 
 A message appears that the connection was successfully created. Verify that the connection is visible on the AWS Glue Studio console.
 
@@ -58,7 +71,9 @@ To create the resources, complete the following steps:
 5.  For **KeyName**, choose the name of the EC2 key pair that you created as a prerequisite.
 6.  For **VpcCIDR**, leave as is.
 7.  Choose **Next**.  
-    [![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image021.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image021.png)
+
+    ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image021.png)
+
 8.  Choose **Next**.
 9.  On the **Review** page, select **I acknowledge that AWS CloudFormation might create IAM resources with custom names**.
 10.  Choose **Create stack**.
@@ -144,6 +159,7 @@ To start the AWS Glue streaming job, complete the following steps:
 1.  On the AWS Glue Studio console, find the job with the value for `HudiDeltastreamerGlueJob`.
 2.  Choose the job to review the script and job details.
 3.  On the **Job details** tab, replace the value of the `--KAFKA_BOOTSTRAP_SERVERS` key with the broker service URL of StreamNative Cloud cluster:
+
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image027.png)
 
     ![](./images/sn-cluster-url.jpg)
