@@ -106,10 +106,10 @@ To run a Kafka Connect cluster, we need to create a configuration file in the `p
 cd kafka_2.13-3.1.0
 # create a connect configuration file
 # which contains information of Kafka server (StreamNative KoP cluster)
-vim conf/connect-sn-kop.properites
+vim conf/connect-sn-kop.properties
 ```
 
-Add the following content to `conf/connect-sn-kop.properites`:
+Add the following content to `conf/connect-sn-kop.properties`:
 
 ```conf
 # add the information of StreamNative KoP cluster
@@ -176,7 +176,7 @@ Also, we need to config a `JsonConverter` because we will send json format messa
 
 Just now we configed the Kakfa connect server, now we need to config the Elasticsearch sink connector.
 
-Add the following content to `conf/elasticsearch-sink-connector.properites`:
+Add the following content to `conf/elasticsearch-sink-connector.properties`:
 
 ```conf
 name=elasticsearch-sink
@@ -206,7 +206,7 @@ To run the cluster with the configurations that you applied, open a new terminal
 
 ```bash
 cd kafka_2.13-3.1.0
-bin/connect-standalone.sh config/connect-sn-kop.properites config/elasticsearch-sink-connector.properites
+bin/connect-standalone.sh config/connect-sn-kop.properties config/elasticsearch-sink-connector.properties
 ```
 
 The output should contain no errors:
