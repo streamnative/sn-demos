@@ -50,7 +50,7 @@ public class SNCloudJWTTokenConsumer {
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.INFO);
 
-        // replace these config with your cluster
+        // replace these configs with your cluster
         String serverUrl = "SERVER-URL"
 	    String jwtToken = "YOUR-TOKEN"
         String token = "token:" + jwtToken;
@@ -58,13 +58,13 @@ public class SNCloudJWTTokenConsumer {
         final String topicName = "persistent://public/default/test-kafka-topic";
         String namespace = "public/default";
 
+        // 1. Create a consumer with token authentication, which is equivalent to SASL/PLAIN mechanism in Kafka
         final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, serverUrl);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "hello-world");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        // 2. Create a producer with token authentication, which is equivalent to SASL/PLAIN mechanism in Kafka
         props.put("security.protocol", "SASL_SSL");
         props.put("sasl.mechanism", "PLAIN");
         props.put("sasl.jaas.config", String.format(
@@ -75,7 +75,7 @@ public class SNCloudJWTTokenConsumer {
         final KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singleton(topicName));
 
-        // 2. Consume some messages and quit immediately
+        // 3. Consume some messages and quit immediately
         boolean running = true;
         while (running) {
             System.out.println("running");
@@ -128,15 +128,14 @@ public class SNCloudJWTTokenProducer {
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.INFO);
 
-        // replace these config with your cluster
+        // replace these configs with your cluster
         String serverUrl = "SERVER-URL"
 	    String jwtToken = "YOUR-TOKEN"
         String token = "token:" + jwtToken;
         final String topicName = "persistent://public/default/test-kafka-topic";
         String namespace = "public/default";
 
-        // 1. Create properties of oauth2 authentication, which is equivalent to SASL/PLAIN mechanism in Kafka
-        // 2. Create a producer with token authentication, which is equivalent to SASL/PLAIN mechanism in Kafka
+        // 1. Create a producer with token authentication, which is equivalent to SASL/PLAIN mechanism in Kafka
         final Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, serverUrl);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
