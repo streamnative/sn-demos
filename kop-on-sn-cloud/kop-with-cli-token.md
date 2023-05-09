@@ -29,12 +29,12 @@ curl -O https://repo1.maven.org/maven2/org/apache/pulsar/pulsar-client-api/2.9.2
 ```
 
 
-## Config OAuth2 and test connection
+## Config JWT token and test connection
 
-1. Create OAuth configuration file:
+1. Create configuration file for JWT token:
 
 ```bash
-# configure kafka.properties file.
+# configure kafka-token.properties file.
 echo 'security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="public/default" password="token:YOUR-TOKEN";' > ~/kafka-token.properties
