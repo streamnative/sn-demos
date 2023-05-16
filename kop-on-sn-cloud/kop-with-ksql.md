@@ -3,7 +3,7 @@
 
 1️⃣ Follow [this tutorial](https://www.notion.so/streamnativeio/StreamNative-Cloud-for-Kafka-DRAFT-6aa74659b5f5495883beaa88e21eabc6) to create a Pulsar cluster and a service account on StreamNative Cloud.
 
-2️⃣ Follow [confluent document](https://docs.docker.com/engine/install/) to download ksql server and ksql cli.
+2️⃣ Follow [confluent document](https://docs.confluent.io/platform/current/ksqldb/installing.html) to download ksql server and ksql cli.
 
 ## Start ksql server and ksql cli
 
