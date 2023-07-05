@@ -5,7 +5,9 @@ This tutorial is based on [Ingest streaming data to Apache Hudi tables using AWS
 
 1️⃣ We use an [AWS CloudFormation template](http://aws.amazon.com/cloudformation) to provision some resources for our solution. So you need a AWS account first.
 
-2️⃣ Follow [this tutorial](https://www.notion.so/streamnativeio/StreamNative-Cloud-for-Kafka-DRAFT-6aa74659b5f5495883beaa88e21eabc6) to create a Pulsar cluster and a service account on StreamNative Cloud.
+2️⃣ The template requires you to select an EC2 key pair. This key is configured on an EC2 instance that lives in the public subnet. We use this EC2 instance to ingest data to StreamNative Pulsar cluster. Make sure you have a key in the AWS Region where you deploy the template. If you don’t have one, you can [create a new key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
+
+3️⃣ Follow [this tutorial](https://www.notion.so/streamnativeio/StreamNative-Cloud-for-Kafka-DRAFT-6aa74659b5f5495883beaa88e21eabc6) to create a Pulsar cluster and a service account on StreamNative Cloud.
 
 
 ## Create the Apache Hudi connection
@@ -15,23 +17,18 @@ To add the Apache Hudi Connector for AWS Glue, complete the following steps:
 1.  On the AWS Glue Studio console, choose **Connectors**.
 2.  Choose **Go to AWS Marketplace**.
 3.  Search for and choose **Apache Hudi Connector for AWS Glue**. 
- 
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image003.png)
 
 4.  Choose **Continue to Subscribe**.  
-
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image005.png)
 
 5.  Review the terms and conditions, then choose **Accept Terms**.  
-
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image007.png)
 
     After you accept the terms, it takes some time to process the request.  
-
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image009.png)
 
 6.  Choose **Continue to Configuration**.  
-
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image011.png)
 
 7.  For **Fulfillment option**, choose **Glue 3.0**.
@@ -40,17 +37,16 @@ To add the Apache Hudi Connector for AWS Glue, complete the following steps:
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image013.png)
 
 10.  Choose **Usage instructions**, and then choose **Activate the Glue connector from AWS Glue Studio**.  
-
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image015.png)
+
     You’re redirected to AWS Glue Studio.
 11.  For **Name**, enter `Hudi-Glue-Connector`.
 12.  Choose **Create connection and activate connector**.  
-
     ![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image017.png)
 
 A message appears that the connection was successfully created. Verify that the connection is visible on the AWS Glue Studio console.
 
-[![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image019.png)](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image019.png)
+![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/09/26/bdb-2298-image019.png)
 
 ## Launch the CloudFormation stack
 
@@ -141,16 +137,7 @@ The schema uses the following parameters:
 ./bin/kafka-console-producer.sh --bootstrap-server <your-broker-url> --producer.config ./kafka.properties --topic hudi-deltastream-demo < init_data.json
 ```
 
-The following is the schema of a record ingested into the Kafka topic:
-
-The schema uses the following parameters:
-
--   **id** – The product ID
--   **category** – The product category
--   **ts** – The timestamp when the record was inserted or last updated
--   **name** – The product name
--   **quantity** – The available quantity of the product in the inventory
-
+The schema configuration for the data has been stored in the S3 bucket created by the CloudFormation stack. We will pass the S3 bucket name to the AWS Glue streaming job by using the `--CONFIG_BUCKET` parameter.
 
 ## Config and Start the AWS Glue Streaming Job
 
@@ -311,6 +298,20 @@ DeltaStreamer has multiple [options](https://hudi.apache.org/docs/hoodie_deltast
 -   **table-type** – Indicates the Hudi storage type to use. In this post, it’s set to `COPY_ON_WRITE`.
 
 The following are some of the important DeltaStreamer configuration properties set in the AWS Glue streaming job:
+
+```properties
+# Schema provider props (change to absolute path based on your installation)
+hoodie.deltastreamer.schemaprovider.source.schema.file=s3://" + args("CONFIG_BUCKET") + "/artifacts/hudi-deltastreamer-glue/config/schema.avsc
+hoodie.deltastreamer.schemaprovider.target.schema.file=s3://" + args("CONFIG_BUCKET") + "/artifacts/hudi-deltastreamer-glue/config/schema.avsc
+
+# Kafka Source
+hoodie.deltastreamer.source.kafka.topic=hudi-deltastream-demo
+
+#Kafka props
+bootstrap.servers=args("KAFKA_BOOTSTRAP_SERVERS")
+auto.offset.reset=earliest
+security.protocol=SSL
+```
 
 The configuration contains the following details:
 
