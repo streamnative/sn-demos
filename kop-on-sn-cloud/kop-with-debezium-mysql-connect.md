@@ -88,13 +88,7 @@ docker-compose -f docker-compose.yaml up
 }
 ```
 
-The `SERVER-URL` can be found in StreamNative Cloud panel too:
-
-![](./images/broker-url.jpg)
-
-Besure to replace `YOUR-TOKEN` with your service account token:
-
-![](./images/token.jpg)
+Besure to replace `YOUR-TOKEN` with your service account token and `SERVER-URL` with your broker url.
 
 2. Start MySQL connector
 ```shell
@@ -111,9 +105,7 @@ echo 'security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="public/default" password="token:YOUR-TOKEN";' > ~/kafka-token.properties
 ```
-Besure to replace `YOUR-TOKEN` with your service account token:
-
-![](./images/token.jpg)
+Besure to replace `YOUR-TOKEN` with your service account token.
 
 2. Run a Kafka consumer start to receive from `dbserver1.inventory.customers`:
 
@@ -125,9 +117,8 @@ Besure to replace `YOUR-TOKEN` with your service account token:
     --property print.key=true \
     --topic dbserver1.inventory.customers
 ```
-The `SERVER-URL` can be found in StreamNative Cloud panel too:
 
-![](./images/broker-url.jpg)
+Besure to replace `SERVER-URL` with your broker url.
 
 ## Modify records in the database via MySQL client
 
